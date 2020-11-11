@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Countries Facts</string>
+    <string name="africa">Africa</string>
+    <string name="americas">Americas</string>
+    <string name="asia">Asia</string>
+    <string name="europe">Europe</string>
+    <string name="oceania">Oceania</string>
+    <string name="by_name">Find by name</string>
+    <string name="by_currency">Find by currency</string>
+    <string name="by_language">Find by language</string>
+    <string name="by_capital">Find by capital</string>
+    <string name="by_calling_code">Find by calling code</string>
+    <string name="flag">flag</string>
+    <string name="borders">Borders: %s</string>
+    <string name="country_name">%1$s\n%2$s</string>
+</resources>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.ui.activity.CountryActivity">
+
+    <TextView
+        android:id="@+id/county_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:lineSpacingExtra="10sp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/country_flag"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/country_flag"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/region_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/capital_icon"
+        app:layout_constraintStart_toStartOf="@+id/county_name"
+        app:layout_constraintTop_toBottomOf="@+id/county_name"
+        app:srcCompat="@drawable/ic_baseline_map_24" />
+
+    <TextView
+        android:id="@+id/country_region"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_capital"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@id/region_icon"
+        app:layout_constraintTop_toTopOf="@+id/region_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/capital_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/language_icon"
+        app:layout_constraintStart_toStartOf="@+id/region_icon"
+        app:layout_constraintTop_toBottomOf="@+id/region_icon"
+        app:srcCompat="@drawable/baseline_location_city_24" />
+
+    <TextView
+        android:id="@+id/country_capital"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_language"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/capital_icon"
+        app:layout_constraintTop_toTopOf="@+id/capital_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/language_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/borders_icon"
+        app:layout_constraintStart_toStartOf="@+id/region_icon"
+        app:layout_constraintTop_toBottomOf="@+id/capital_icon"
+        app:srcCompat="@drawable/baseline_language_24" />
+
+    <TextView
+        android:id="@+id/country_language"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_borders"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/language_icon"
+        app:layout_constraintTop_toTopOf="@+id/language_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/borders_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/regional_block_icon"
+        app:layout_constraintStart_toStartOf="@+id/region_icon"
+        app:layout_constraintTop_toBottomOf="@+id/language_icon"
+        app:srcCompat="@drawable/ic_baseline_location_searching_24" />
+
+    <TextView
+        android:id="@+id/country_borders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@id/country_regional_block"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@id/borders_icon"
+        app:layout_constraintTop_toTopOf="@id/borders_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/regional_block_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/second_guideline"
+        app:layout_constraintStart_toStartOf="@+id/region_icon"
+        app:layout_constraintTop_toBottomOf="@+id/borders_icon"
+        app:srcCompat="@drawable/ic_baseline_compare_arrows_24" />
+
+    <TextView
+        android:id="@+id/country_regional_block"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/second_guideline"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@id/regional_block_icon"
+        app:layout_constraintTop_toTopOf="@+id/regional_block_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/currency_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/calling_code_icon"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/region_icon"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_euro_symbol_24" />
+
+    <TextView
+        android:id="@+id/country_currency"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_calling_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/currency_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/calling_code_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/country_calling_code"
+        app:layout_constraintStart_toStartOf="@id/currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/capital_icon"
+        app:srcCompat="@drawable/baseline_call_24" />
+
+    <TextView
+        android:id="@+id/country_calling_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_population"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/calling_code_icon" />
+
+    <ImageView
+        android:id="@+id/population_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/language_icon"
+        app:srcCompat="@drawable/ic_baseline_people_outline_24" />
+
+    <TextView
+        android:id="@+id/country_population"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/country_time_zone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/population_icon"
+        app:layout_constraintTop_toTopOf="@+id/population_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/time_zone_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/borders_icon"
+        app:srcCompat="@drawable/baseline_schedule_24" />
+
+    <TextView
+        android:id="@+id/country_time_zone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/second_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@id/time_zone_icon"
+        app:layout_constraintTop_toTopOf="@id/time_zone_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/second_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

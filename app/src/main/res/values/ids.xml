@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fab_country_name" type="id" />
+    <item name="fab_country_currency" type="id" />
+    <item name="fab_country_language" type="id" />
+    <item name="fab_country_capital" type="id" />
+    <item name="fab_country_calling_code" type="id" />
+</resources>
