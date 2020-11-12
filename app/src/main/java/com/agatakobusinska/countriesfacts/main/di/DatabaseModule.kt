@@ -1,6 +1,7 @@
 package com.agatakobusinska.countriesfacts.main.di
 
 import android.content.Context
+import androidx.room.Room
 import com.agatakobusinska.countriesfacts.main.model.AppDatabase
 import com.agatakobusinska.countriesfacts.main.model.local.CountryDao
 import com.agatakobusinska.countriesfacts.main.model.remote.CountryRemoteDataSource
@@ -18,15 +19,19 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context) = AppDatabase.getDatabase(context)
+    fun provideDatabase(@ApplicationContext context: Context) : AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "countries_database"
+        ).fallbackToDestructiveMigration().build()
+    }
 
-    @Singleton
     @Provides
-    fun provideCountryDao(db: AppDatabase) = db.countryDao()
+    fun provideCountryDao(db: AppDatabase) = db.countryDao
 
-    @Singleton
     @Provides
-    fun proviceRepository(
+    fun provideRepository(
         countryRemoteDataSource: CountryRemoteDataSource,
         countryDao: CountryDao
     ): CountryRepository = CountryRepository(countryRemoteDataSource, countryDao)

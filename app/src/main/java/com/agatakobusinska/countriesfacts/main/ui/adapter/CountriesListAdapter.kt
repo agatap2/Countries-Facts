@@ -18,42 +18,52 @@ import kotlinx.android.synthetic.main.list_item.view.*
 class CountriesListAdapter(private val context: Context) :
     RecyclerView.Adapter<CountriesListAdapter.ViewHolder>() {
 
-    private val countries: ArrayList<Country> = arrayListOf()
+    private val values: MutableList<Country> = mutableListOf()
+    private val onClickListener: View.OnClickListener
+    private var selectedItem: Country? = null
+
+    init {
+        onClickListener = View.OnClickListener { view ->
+            selectedItem = view.tag as Country
+            val intent = Intent(view.context, CountryActivity::class.java).apply {
+                putExtra("id", selectedItem?.id)
+            }
+            view.context.startActivity(intent)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-
-        view.setOnClickListener {
-            val intent = Intent(it.context, CountryActivity::class.java).apply {
-                putExtra("id", it.country_id.text)
-            }
-            it.context.startActivity(intent)
-        }
 
         return ViewHolder(view, context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.updateWithCountry(countries[position])
+        holder.updateWithCountry(values[position])
+        holder.setIsRecyclable(false)
+
+        with(holder.itemView) {
+            tag = values[position]
+            setOnClickListener(onClickListener)
+        }
     }
 
-    override fun getItemCount(): Int = countries.size
+    override fun getItemCount(): Int = values.size
 
     fun setData(countries: List<Country>) {
-        this.countries.clear()
-        this.countries.addAll(countries)
+        println("RESULT: $countries")
+        values.clear()
+        values.addAll(countries.distinctBy { it.id })
         notifyDataSetChanged()
     }
 
     class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.county_name
         private val flag: ImageView = view.country_flag
-        private val id: TextView = view.country_id
 
         fun updateWithCountry(country: Country?) {
             name.text = country?.name?.substringBefore('(')
             flag.loadImage(country?.flag, context)
-            id.text = country?.id.toString()
         }
     }
 }

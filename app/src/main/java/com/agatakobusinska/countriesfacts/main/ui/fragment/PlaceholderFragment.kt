@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.agatakobusinska.countriesfacts.databinding.FragmentMainBinding
 import com.agatakobusinska.countriesfacts.main.model.entities.Country
@@ -14,11 +13,12 @@ import com.agatakobusinska.countriesfacts.main.ui.adapter.Continent.*
 import com.agatakobusinska.countriesfacts.main.ui.adapter.CountriesListAdapter
 import com.agatakobusinska.countriesfacts.main.viewmodel.PageViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PlaceholderFragment : Fragment() {
 
-    private val pageViewModel: PageViewModel by viewModels()
+    @Inject lateinit var pageViewModel: PageViewModel
     private lateinit var progressBar: ProgressBar
     private lateinit var countriesList: RecyclerView
     private lateinit var adapter: CountriesListAdapter
@@ -42,7 +42,7 @@ class PlaceholderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = CountriesListAdapter(requireContext())
-        binding.countriesList.adapter = adapter
+        countriesList.adapter = adapter
 
         pageViewModel.europe.observe(viewLifecycleOwner, { data ->
             if (data.isNullOrEmpty().not())

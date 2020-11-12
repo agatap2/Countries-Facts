@@ -36,13 +36,6 @@
             android:layout_alignParentEnd="true"
             android:contentDescription="@string/flag" />
 
-        <TextView
-            android:id="@+id/country_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:visibility="gone" />
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

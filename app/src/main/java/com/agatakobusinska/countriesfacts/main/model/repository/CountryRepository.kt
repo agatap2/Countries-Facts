@@ -6,42 +6,48 @@ import com.agatakobusinska.countriesfacts.main.model.entities.Country
 import com.agatakobusinska.countriesfacts.main.model.json.CountryData
 import com.agatakobusinska.countriesfacts.main.model.local.CountryDao
 import com.agatakobusinska.countriesfacts.main.model.remote.CountryRemoteDataSource
-import javax.inject.Inject
+import com.agatakobusinska.countriesfacts.main.model.entities.Currency as EntitiesCurrency
 
 
-class CountryRepository @Inject constructor(
+class CountryRepository(
     private val remoteDataSource: CountryRemoteDataSource,
     private val localDataSource: CountryDao
 ) {
 
-    val allCountries = localDataSource.getAllCountries()
-
-    suspend fun insertCountries(countries: List<Country>) {
-        localDataSource.insertAllCountries(countries)
-    }
-
-    fun getAllCountriesFromRegion(region: String) : LiveData<List<Country>> {
+    fun getAllCountriesFromRegion(region: String): LiveData<List<Country>> {
         return localDataSource.getCountriesFromRegion(region)
     }
 
-    fun getCountryById(id: Int): LiveData<Country> {
-        return localDataSource.getCountry(id)
+    suspend fun getCountryById(id: Int): Country {
+        return localDataSource.getCountryById(id)
+    }
+
+    fun getCountriesByName(name: String): LiveData<List<Country>> {
+        return localDataSource.getCountryByName("%$name%")
+    }
+
+    fun getCountriesByCurrency(currency: String): LiveData<List<Country>> {
+        return localDataSource.getCountriesByCurrency(currency)
     }
 
     suspend fun downloadCountriesList() {
         try {
             val fullList = remoteDataSource.getAllCountries()
             val finalList = formatDataList(fullList)
-            localDataSource.insertAllCountries(finalList)
+            localDataSource.insertAllCountries(finalList.first)
+            localDataSource.insertAllCurrencies(finalList.second)
         } catch (e: Exception) {
             Log.e("ApiCall: ", "${e.message}")
         }
     }
 
-    private fun formatDataList(fullList: List<CountryData>): List<Country> {
+    private fun formatDataList(fullList: List<CountryData>): Pair<List<Country>, List<EntitiesCurrency>> {
 
-        val finalList = mutableListOf<Country>()
-        for (countryData: CountryData in fullList) {
+        val finalCountryList = mutableListOf<Country>()
+        val finalCurrencyList = mutableListOf<EntitiesCurrency>()
+        var countryCurrencyRelationId = 0
+        fullList.forEach { countryData: CountryData ->
+            countryCurrencyRelationId++
             val country = Country(
                 name = countryData.name,
                 callingCodes = countryData.callingCodes,
@@ -51,14 +57,25 @@ class CountryRepository @Inject constructor(
                 timezones = countryData.timezones,
                 nativeName = countryData.nativeName,
                 currencies = countryData.currencies,
+                currencyId = countryCurrencyRelationId,
                 languages = countryData.languages,
                 flag = countryData.flag,
                 regionalBlocs = countryData.regionalBlocs,
-                borders = countryData.borders
+                borders = countryData.borders,
+                alpha3Code = countryData.alpha3Code
             )
-            finalList.add(country)
+            finalCountryList.add(country)
+            country.currencies?.forEach { currencyData ->
+                val currency = EntitiesCurrency(
+                    countryId = countryCurrencyRelationId,
+                    currencyCode = currencyData.currencyCode,
+                    currencyName = currencyData.currencyName,
+                    currencySymbol = currencyData.currencySymbol
+                )
+                finalCurrencyList.add(currency)
+            }
         }
-
-        return finalList
+        println(finalCountryList)
+        return Pair(finalCountryList, finalCurrencyList)
     }
 }

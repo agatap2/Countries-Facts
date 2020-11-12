@@ -13,4 +13,8 @@
     <string name="flag">flag</string>
     <string name="borders">Borders: %s</string>
     <string name="country_name">%1$s\n%2$s</string>
+    <string name="search_button">Search</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="searchingWarning">Type searching condition</string>
+    <string name="searching_results">Searching results</string>
 </resources>

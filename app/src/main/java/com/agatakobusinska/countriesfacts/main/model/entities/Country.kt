@@ -17,39 +17,45 @@ data class Country(
     val id: Int = 0,
 
     @ColumnInfo(name = "country_name")
-    var name: String?,
+    var name: String? = "",
 
     @ColumnInfo(name = "country_calling_code")
-    var callingCodes: List<String>?,
+    var callingCodes: List<String>? = emptyList(),
 
     @ColumnInfo(name = "capital")
-    var capital: String?,
+    var capital: String? = "",
 
     @ColumnInfo(name = "region")
-    var region: String?,
+    var region: String? = "",
 
     @ColumnInfo(name = "population")
-    var population: Int?,
+    var population: Int? = 0,
 
     @ColumnInfo(name = "time_zone")
-    var timezones: List<String>?,
+    var timezones: List<String>? = emptyList(),
 
     @ColumnInfo(name = "native_name")
-    var nativeName: String?,
+    var nativeName: String? = "",
 
     @ColumnInfo(name = "currencies")
-    var currencies: List<Currency>?,
+    var currencies: List<Currency>? = emptyList(),
+
+    @ColumnInfo(name = "currency_id")
+    var currencyId: Int? = 0,
 
     @ColumnInfo(name = "languages")
-    var languages: List<Language>?,
+    var languages: List<Language>? = emptyList(),
 
     @ColumnInfo(name = "country_flag")
-    var flag: String?,
+    var flag: String? = "",
 
     @ColumnInfo(name = "regional_block")
-    var regionalBlocs: List<RegionalBlock>?,
+    var regionalBlocs: List<RegionalBlock>? = emptyList(),
 
     @ColumnInfo(name = "borders")
-    var borders: List<String>?
+    var borders: List<String>? = emptyList(),
+
+    @ColumnInfo(name = "alpha3code")
+    var alpha3Code: String? = ""
 
 ) : Serializable

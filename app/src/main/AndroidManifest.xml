@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.ui.activity.CountryActivity"
-            android:parentActivityName=".main.ui.activity.MainActivity"/>
+        <activity android:name=".main.ui.activity.CountryActivity"/>
+        <activity android:name=".main.ui.activity.SearchingResultActivity"/>
     </application>
 
 </manifest>

@@ -18,10 +18,6 @@ class PageViewModel @ViewModelInject constructor(
     val africa: LiveData<List<Country>> = repository.getAllCountriesFromRegion("africa")
     val oceania: LiveData<List<Country>> = repository.getAllCountriesFromRegion("oceania")
 
-    fun insert(countries: List<Country>) = viewModelScope.launch {
-        repository.insertCountries(countries)
-    }
-
     fun downloadCountries() = viewModelScope.launch {
         repository.downloadCountriesList()
     }
